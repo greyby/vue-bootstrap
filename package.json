@@ -1,0 +1,22 @@
+{
+  "name": "vue-loader-example",
+  "version": "1.0.0",
+  "description": "Example using Webpack with vue-loader",
+  "main": "src/app.js",
+  "dependencies": {
+    "vue": "^0.12.9"
+  },
+  "devDependencies": {
+    "css-loader": "^0.15.6",
+    "html-loader": "^0.3.0",
+    "style-loader": "^0.12.3",
+    "stylus-loader": "^1.2.1",
+    "vue-loader": "^2.1.1",
+    "webpack": "^1.11.0"
+  },
+  "scripts": {
+    "dev": "webpack --watch",
+    "build": "webpack -p"
+  },
+  "license": "MIT"
+}
