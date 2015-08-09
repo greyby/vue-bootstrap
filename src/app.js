@@ -1,11 +1,17 @@
 var Vue = require('vue')
+var Router = require('director').Router
 var app = new Vue(require('./app.vue'))
+var router = new Router()
 
-app.view = 'page-a'
 
-function route () {
-  app.view = window.location.hash.slice(1) || 'page-a'
-}
+router.on('/:page', function (page) {
+  app.view = page
+})
 
-window.addEventListener('hashchange', route)
-window.addEventListener('load', route)
+router.configure({
+  notfound: function () {
+    router.setRoute('/page-a')
+  }
+})
+
+router.init('/page-a')
