@@ -1,6 +1,3 @@
-<style>
-</style>
-
 <template>
   <div class="view" v-transition>
     <h1>This is page B.</h1>
@@ -16,3 +13,6 @@ module.exports = {
   }
 }
 </script>
+
+<style lang="stylus">
+</style>

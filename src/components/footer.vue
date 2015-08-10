@@ -1,6 +1,3 @@
-<style lang="stylus">
-</style>
-
 <template>
   <div class="footer">
   © 2015 {{author}}
@@ -12,3 +9,6 @@ module.exports = {
   props: ['author']
 }
 </script>
+
+<style lang="stylus">
+</style>
