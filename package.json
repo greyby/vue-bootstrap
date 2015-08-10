@@ -4,7 +4,7 @@
   "description": "Example using Webpack with vue-loader",
   "main": "src/app.js",
   "dependencies": {
-    "vue": "^0.12.9",
+    "vue": "^0.12.10",
     "director": "^1.2.8"
   },
   "devDependencies": {
