@@ -1,6 +1,3 @@
-<style>
-</style>
-
 <template>
   <div class="view" v-transition>
   	<app-header msg="{{msg}}"></app-header>
@@ -27,3 +24,6 @@ module.exports = {
   }
 }
 </script>
+
+<style lang="stylus">
+</style>
