@@ -2,15 +2,16 @@ var webpack = require("webpack");
 
 module.exports = {
   // entry: "./src/app.js",
-  entry: {
-    app: "./src/app.js",
-    vendors: ["jquery","bootstrap"]
-  },
+  // entry: {
+  //   app: "./src/app.js",
+  //   vendors: ["jquery","bootstrap"]
+  // },
 
   // live reload
-  // entry: {
-  //   app: ['webpack/hot/dev-server','./src/app.js']
-  // },
+  entry: {
+    app: ['webpack/hot/dev-server','./src/app.js'],
+    vendors: ["jquery","bootstrap"]
+  },
   // plugins: [
   //   new webpack.HotModuleReplacementPlugin()
   // ]
