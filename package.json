@@ -22,7 +22,7 @@
   "scripts": {
     "dev": "webpack --watch",
     "build": "webpack -p",
-    "live": "webpack-dev-server --devtool eval --hot --progress --colors"
+    "reload": "webpack-dev-server --devtool eval --hot --progress --colors"
   },
   "license": "MIT"
 }
