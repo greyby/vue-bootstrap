@@ -1,5 +1,4 @@
 require('bootstrap');
-
 require('bootstrap/dist/css/bootstrap.css');
 
 var Vue = require('vue')

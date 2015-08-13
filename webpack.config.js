@@ -39,11 +39,12 @@ module.exports = {
       { test: /\.vue$/, loader: "vue-loader" },
       { test: /\.css$/, loader: "style-loader!css-loader" }, // use ! to chain loaders
       { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' }, // inline base64 URLs for <=8k images, direct URLs for the rest
-      { test: /\.ttf$/,    loader: "file" },
+      { test: /\.ttf$/,    loader: "file?mimetype=application/octet-stream" },
       { test: /\.eot$/,    loader: "file" },
-      { test: /\.svg$/,    loader: "file" },
-      { test: /\.(woff|woff2)$/, loader: 'url-loader?limit=100000' }
+      { test: /\.svg$/,    loader: "file?mimetype=image/svg+xml" },
+      { test: /\.woff$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+      { test: /\.woff2$/, loader: "url-loader?limit=10000&mimetype=application/font-woff2" }
     ]
   },
-  devtool: "source-map"
+  devtool: "#source-map"
 }
