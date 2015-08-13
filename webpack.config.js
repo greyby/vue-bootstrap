@@ -24,8 +24,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
-      "window.jQuery": "jquery",
-      "root.jQuery": "jquery"
+      "window.jQuery": "jquery"
     }),
     new webpack.optimize.CommonsChunkPlugin("vendors", "vendor.bundle.js")
   ],
