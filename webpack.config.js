@@ -1,9 +1,8 @@
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
-  
   entry: {
-    app: "./src/app.js",
+    app: ["webpack/hot/dev-server", "./src/app.js"],
     vendors: ["jquery","bootstrap"]
   },
 
@@ -18,7 +17,9 @@ module.exports = {
 
   output: {
     path: "./build",
-    filename: "build.js"
+    publicPath: "/build/",
+    filename: "bundle.js"
+
   },
   plugins: [
     new webpack.ProvidePlugin({
