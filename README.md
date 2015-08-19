@@ -1,4 +1,4 @@
-# vue-loader example
+# vue-bootstrap
 
 > Example using [vue-loader](https://github.com/vuejs/vue-loader) with [Webpack](http://webpack.github.io).
 
@@ -6,9 +6,5 @@
 
 ``` bash
 npm install
-npm run dev
+npm run server
 ```
-
-## Notes
-
-The app uses a lot of pre-processors just for demonstration purposes.
