@@ -28,7 +28,7 @@ module.exports = {
       "window.jQuery": "jquery"
     }),
     new webpack.optimize.CommonsChunkPlugin("vendors", "vendor.bundle.js"),
-    new ExtractTextPlugin("build.css")
+    new ExtractTextPlugin("[name].css")
   ],
   // externals: {
   //       // require("jquery") is external and available
@@ -40,7 +40,7 @@ module.exports = {
     loaders: [
       { test: /\.vue$/, loader: "vue-loader" },
       // { test: /\.css$/, loader: "style-loader!css-loader" }, // use ! to chain loaders
-      { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader")},
+      { test: /\.css$/, loader: ExtractTextPlugin.extract("style!css")},
       { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' }, // inline base64 URLs for <=8k images, direct URLs for the rest
       { test: /\.ttf$/,    loader: "file?mimetype=application/octet-stream" },
       { test: /\.eot$/,    loader: "file" },
