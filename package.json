@@ -1,7 +1,7 @@
 {
-  "name": "vue-loader-example",
+  "name": "vue-bootstrap",
   "version": "1.0.0",
-  "description": "Example using Webpack with vue-loader",
+  "description": "vue-bootstrap",
   "main": "src/app.js",
   "dependencies": {
     "vue": "^0.12.10",

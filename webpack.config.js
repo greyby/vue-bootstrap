@@ -1,19 +1,12 @@
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var vue = require("vue-loader");
+
 module.exports = {
   entry: {
     app: ["webpack/hot/dev-server", "./src/app.js"],
     vendors: ["jquery","bootstrap"]
   },
-
-  // live reload
-  // entry: {
-  //   app: ['webpack/hot/dev-server','./src/app.js'],
-  //   vendors: ["jquery","bootstrap"]
-  // },
-  // plugins: [
-  //   new webpack.HotModuleReplacementPlugin()
-  // ]
 
   output: {
     path: "./build",
@@ -28,7 +21,7 @@ module.exports = {
       "window.jQuery": "jquery"
     }),
     new webpack.optimize.CommonsChunkPlugin("vendors", "vendor.bundle.js"),
-    new ExtractTextPlugin("[name].css")
+    new ExtractTextPlugin("build.css")
   ],
   // externals: {
   //       // require("jquery") is external and available
@@ -38,9 +31,14 @@ module.exports = {
 
   module: {
     loaders: [
-      { test: /\.vue$/, loader: "vue-loader" },
+      {
+        test: /\.vue$/, loader: vue.withLoaders({
+          css: ExtractTextPlugin.extract("css"),
+          stylus: ExtractTextPlugin.extract("css!stylus")
+        })
+      },
       // { test: /\.css$/, loader: "style-loader!css-loader" }, // use ! to chain loaders
-      { test: /\.css$/, loader: ExtractTextPlugin.extract("style!css")},
+      { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader")},
       { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' }, // inline base64 URLs for <=8k images, direct URLs for the rest
       { test: /\.ttf$/,    loader: "file?mimetype=application/octet-stream" },
       { test: /\.eot$/,    loader: "file" },
