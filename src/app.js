@@ -14,7 +14,9 @@ Vue.config.debug = false
 // strict mode
 Vue.config.strict = true
 // var app = new Vue(require('./app.vue'))
-var router = new VueRouter()
+var router = new VueRouter({
+	history: true
+})
 
 
 router.map({
