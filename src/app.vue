@@ -5,7 +5,6 @@
 </div>
 <router-view></router-view>
 
-
 <!-- <component is="{{view}}"
       class="view"
       params="{{params}}"
