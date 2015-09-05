@@ -1,9 +1,10 @@
 <template>
 <div class="nav">
-    <a href="#page-a">Go to page A</a>
-    <a href="#page-b">Go to page B</a>
+    <a v-link="/page-a">Go to page A</a>
+    <a v-link="/page-b">Go to page B</a>
 </div>
-<component is="{{view}}"></component>
+<router-view></router-view>
+
 
 <!-- <component is="{{view}}"
       class="view"
@@ -12,18 +13,12 @@
       v-transition
       transition-mode="out-in">
     </component> -->
+    </div>
 </template>
 
 <script>
 module.exports = {
-  el: '#app',
-  data: {
-    view: 'page-a'
-  },
-  components: {
-    'page-a': require('./views/view-a.vue'),
-    'page-b': require('./views/view-b.vue')
-  }
+  el: '#app'
 }
 </script>
 

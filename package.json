@@ -4,8 +4,8 @@
   "description": "vue-bootstrap",
   "main": "src/app.js",
   "dependencies": {
-    "vue": "^0.12.10",
-    "director": "^1.2.8"
+    "vue": "^0.12.12",
+    "vue-router": "0.5.2"
   },
   "devDependencies": {
     "css-loader": "^0.15.6",
