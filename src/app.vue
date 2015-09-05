@@ -4,15 +4,6 @@
     <a v-link="/page-b">Go to page B</a>
 </div>
 <router-view></router-view>
-
-<!-- <component is="{{view}}"
-      class="view"
-      params="{{params}}"
-      keep-alive
-      v-transition
-      transition-mode="out-in">
-    </component> -->
-    </div>
 </template>
 
 <script>
