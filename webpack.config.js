@@ -2,8 +2,7 @@ var vue = require('vue-loader')
 var webpack = require("webpack")
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
 
-var autoprefixer = require('autoprefixer')
-var cssLoader = ExtractTextPlugin.extract("style-loader", "css-loader?sourceMap!postcss-loader")
+var cssLoader = ExtractTextPlugin.extract("style-loader", "css-loader")
 
 module.exports = {
   entry: {
@@ -53,9 +52,12 @@ module.exports = {
       { test: /\.woff2$/, loader: "url-loader?limit=10000&mimetype=application/font-woff2" }
     ]
   },
-  postcss: [
-    require('autoprefixer')
-  ],
+  vue: {
+    loaders: {
+      css: ExtractTextPlugin.extract("css"),
+      stylus: ExtractTextPlugin.extract("css!stylus")
+    }
+  },
   babel: {
     presets: ['es2015'],
     plugins: ['transform-runtime']
