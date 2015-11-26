@@ -1,10 +1,13 @@
-var webpack = require("webpack");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var vue = require("vue-loader");
+var vue = require('vue-loader')
+var webpack = require("webpack")
+var ExtractTextPlugin = require("extract-text-webpack-plugin")
+
+var autoprefixer = require('autoprefixer')
+var cssLoader = ExtractTextPlugin.extract("style-loader", "css-loader?sourceMap!postcss-loader")
 
 module.exports = {
   entry: {
-    app: ["webpack/hot/dev-server", "./src/app.js"],
+    app: "./src/app.js",
     vendors: ["jquery","bootstrap"]
   },
 
@@ -12,9 +15,14 @@ module.exports = {
     path: "./build",
     publicPath: "/build/",
     filename: "bundle.js"
-
   },
   plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
@@ -23,22 +31,20 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin("vendors", "vendor.bundle.js"),
     new ExtractTextPlugin("build.css")
   ],
-  // externals: {
-  //       // require("jquery") is external and available
-  //       //  on the global var jQuery
-  //       "jquery": "jQuery"
-  // },
-
   module: {
     loaders: [
       {
-        test: /\.vue$/, loader: vue.withLoaders({
-          css: ExtractTextPlugin.extract("css"),
-          stylus: ExtractTextPlugin.extract("css!stylus")
-        })
+        test: /\.vue$/,
+        loader: 'vue'
       },
-      // { test: /\.css$/, loader: "style-loader!css-loader" }, // use ! to chain loaders
-      { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader")},
+      {
+        test: /\.js$/,
+        // excluding some local linked packages.
+        // for normal use cases only node_modules is needed.
+        exclude: /node_modules|vue\/src|vue-router\/|vue-loader\/|vue-hot-reload-api\//,
+        loader: 'babel'
+      },
+      { test: /\.css$/, loader: cssLoader },
       { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' }, // inline base64 URLs for <=8k images, direct URLs for the rest
       { test: /\.ttf$/,    loader: "file?mimetype=application/octet-stream" },
       { test: /\.eot$/,    loader: "file" },
@@ -46,6 +52,13 @@ module.exports = {
       { test: /\.woff$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
       { test: /\.woff2$/, loader: "url-loader?limit=10000&mimetype=application/font-woff2" }
     ]
+  },
+  postcss: [
+    require('autoprefixer')
+  ],
+  babel: {
+    presets: ['es2015'],
+    plugins: ['transform-runtime']
   },
   devtool: "#source-map"
 }

@@ -6,8 +6,13 @@
 </template>
 
 <script>
-module.exports = {
-  props: ['side', 'name']
+export default {
+  name: 'Pane',
+
+  props: {
+    side: String,
+    name: String
+  }
 }
 </script>
 

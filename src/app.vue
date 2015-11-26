@@ -1,16 +1,10 @@
 <template>
 <div class="nav">
-    <a v-link="/page-a">Go to page A</a>
-    <a v-link="/page-b">Go to page B</a>
+    <a v-link="{ path: '/pagea' }">Go to page A</a>
+    <a v-link="{ path: '/pageb' }">Go to page B</a>
 </div>
 <router-view></router-view>
 </template>
-
-<script>
-module.exports = {
-  el: '#app'
-}
-</script>
 
 <style lang="stylus">
 html, body

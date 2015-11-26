@@ -11,5 +11,5 @@ This example demonstrates using Webpack as the build tool for Vue.js apps, inclu
 
 ``` bash
 npm install
-npm run server
+npm run serve
 ```

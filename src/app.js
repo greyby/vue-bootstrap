@@ -1,37 +1,38 @@
-require('bootstrap');
-require('bootstrap/dist/css/bootstrap.css');
+require('bootstrap')
+require('bootstrap/dist/css/bootstrap.css')
 
-
-var Vue = require('vue')
-var VueRouter = require('vue-router')
+import Vue from 'vue'
+import Router from 'vue-router'
+import App from './app.vue'
+import PageA from './views/view-a.vue'
+import PageB from './views/view-b.vue'
 
 // install router
-Vue.use(VueRouter)
+Vue.use(Router)
 
 // debug mode
-Vue.config.debug = false
+Vue.config.debug = true
 
 // strict mode
 Vue.config.strict = true
 // var app = new Vue(require('./app.vue'))
-var router = new VueRouter({
-	history: true
+var router = new Router({
+	hashbang: true,
+	history: false
 })
 
 
 router.map({
-	'/page-a': {
-		component: require('./views/view-a.vue')
+	'/pagea/': {
+		component: PageA
 	},
-	'/page-b': {
-		component: require('./views/view-b.vue')
-	},
-
-	// not found
-	'*': {
-		component: require('./views/view-a.vue')
+	'/pageb/': {
+		component: PageB
 	}
 })
 
-var App = Vue.extend(require('./app.vue'))
+router.redirect({
+	'*': '/pagea'
+})
+
 router.start(App, '#app')

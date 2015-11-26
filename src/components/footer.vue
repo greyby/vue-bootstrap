@@ -5,10 +5,11 @@
 </template>
 
 <script>
-module.exports = {
-  props: ['author']
+export default {
+	name: 'Footer',
+
+  props: {
+  	author: String
+  }
 }
 </script>
-
-<style lang="stylus">
-</style>

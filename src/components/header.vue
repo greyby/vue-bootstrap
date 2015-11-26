@@ -3,8 +3,12 @@
 </template>
 
 <script>
-module.exports = {
-  props: ['msg']
+export default {
+	name: 'Header',
+	
+  props: {
+  	msg: String
+  }
 }
 </script>
 
