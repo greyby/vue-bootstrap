@@ -10,6 +10,11 @@ This example demonstrates using Webpack as the build tool for Vue.js apps, inclu
 ## Setup
 
 ``` bash
+git clone https://github.com/vuejs/vue-validator.git node_modules/vue-validator
+cd node_modules/vue-validator
+npm install
+npm run build
+cd ../../
 npm install
 npm run serve
 ```
