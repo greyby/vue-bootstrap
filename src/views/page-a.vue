@@ -2,13 +2,13 @@
   <div class="container" >
   <validator name="validation1">
   <app-header v-bind:msg="msg"></app-header>
-      <div class="form-group" :class="{ 'has-error': true }">
+      <div class="form-group" :class="{ 'has-error': hasErrorMobile }">
         <input type="text" class="form-control input-lg" v-model="mobile" placeholder="mobile" aria-label="mobile" v-validate:mobile="{ required: true, minlength: 5, maxlength: 12 }">
             <p class="help-block" v-show="$validation1.mobile.required && $validation1.mobile.dirty">mobile required</p>
             <p class="help-block" v-show="$validation1.mobile.minlength && $validation1.mobile.dirty">mobile is too short</p>
             <p class="help-block" v-show="$validation1.mobile.maxlength && $validation1.mobile.dirty">mobile is too long</p>
       </div>
-      <div class="form-group">
+      <div class="form-group" :class="{ 'has-error': hasErrorName }">
         <input type="text" class="form-control input-lg" v-model="name" placeholder="name" aria-label="name" v-validate:name="{ required: true, minlength: 2, maxlength: 8 }">
           <p class="help-block" v-show="$validation1.name.required && $validation1.name.dirty">name required</p>
           <p class="help-block" v-show="$validation1.name.minlength && $validation1.name.dirty">name is too short</p>
@@ -34,6 +34,14 @@ export default {
       author: 'greyby',
       mobile: '',
       name: ''
+    }
+  },
+  computed: {
+    hasErrorMobile () {
+      return this.$validation1.mobile.dirty && this.$validation1.mobile.invalid
+    },
+    hasErrorName () {
+      return this.$validation1.name.dirty && this.$validation1.name.invalid
     }
   },
   components: {
