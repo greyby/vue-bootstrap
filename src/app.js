@@ -17,9 +17,31 @@ Vue.use(Validator)
 // debug mode
 Vue.config.debug = true
 
-// MEMO: we need to set the Vue.config `warnExpressionErrors` property value to `false` value.
+// NOTE: we need to set the Vue.config `warnExpressionErrors` property value to `false` value.
 //       see also https://github.com/vuejs/vue-validator/issues/111
 Vue.config.warnExpressionErrors = false
+
+// NOTE: if you want to define the error message of build-in validator, you can re-define the build-in validator.
+//       see the https://github.com/vuejs/vue-validator#global-error-message
+Vue.validator('maxlength', {
+  message (field) {
+    return field + ' is too long'
+  },
+  check: Vue.validator('maxlength')
+})
+
+Vue.validator('minlength', {
+  message (field) {
+    return field + ' is too short'
+  },
+  check: Vue.validator('minlength')
+})
+Vue.validator('required', {
+  message (field) {
+    return field + ' required'
+  },
+  check: Vue.validator('required')
+})
 
 // strict mode
 Vue.config.strict = true
